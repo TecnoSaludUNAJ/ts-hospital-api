@@ -24,6 +24,7 @@ namespace TP_Template_API
         {
             Configuration = configuration;
         }
+     
 
         public IConfiguration Configuration { get; }
 

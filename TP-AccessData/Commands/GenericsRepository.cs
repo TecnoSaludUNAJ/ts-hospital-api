@@ -22,8 +22,9 @@ namespace TP_AccessData.Commands
         }
        
         public void Delete(Guid id)
-        {
-            throw new NotImplementedException();
+        {          
+        //    _context.Remove(id);
+            _context.SaveChanges();
         }
 
         public IEnumerable<T> GetAll<T>() where T : class
