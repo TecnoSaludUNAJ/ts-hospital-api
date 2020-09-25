@@ -14,7 +14,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TP_AccessData;
-using Microsoft.EntityFrameworkCore;
 using SqlKata.Compilers;
 
 namespace TP_Template_API

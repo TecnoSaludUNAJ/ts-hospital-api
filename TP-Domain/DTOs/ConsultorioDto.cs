@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TP_Domain.Entities
+namespace TP_Domain.DTOs
 {
-    public class Consultorio
+    public class ConsultorioDto
     {
         public Guid IdConsultorio { get; set; }
     }

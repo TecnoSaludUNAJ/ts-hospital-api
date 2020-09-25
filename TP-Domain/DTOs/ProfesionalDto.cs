@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TP_Domain.Entities
+namespace TP_Domain.DTOs
 {
-    public class Profesional
+    public class ProfesionalDTO
     {
         public Guid IdProfesional { get; set; }
         public int Dni { get; set; }
@@ -16,6 +16,5 @@ namespace TP_Domain.Entities
         public string Domicilio { get; set; }
         public string Email { get; set; }
         public string Telefono { get; set; }
-
     }
 }
