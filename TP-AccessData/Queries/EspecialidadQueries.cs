@@ -25,7 +25,7 @@ namespace TP_AccessData.Queries
         public List<Especialidad> GetAllEspecialidades()
         {
             var db=new QueryFactory(connection, sqlKataCompiler);
-            
+
             //Chequear query
             var query = db.Query("Especialidades").SelectRaw("*").From("Especialidades");
 
@@ -38,11 +38,22 @@ namespace TP_AccessData.Queries
         public Especialidad GetEspecialidadById(int id)
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
-            Especialidad especialidad = db.Query("Especialidades").Select("Id", "TipoEspecialidad")
-                .Where("Id", "=", id).FirstOrDefault();
+            var especialidad = db.Query("Especialidades").Select("Id", "TipoEspecialidad")
+                .Where("Id", "=", id).FirstOrDefault<Especialidad>();
 
-            return especialidad;
-
+            if (especialidad != null)
+            {
+                return new Especialidad
+                {
+                    Id = especialidad.Id,
+                    TipoEspecialidad = especialidad.TipoEspecialidad,
+                    EspecialistaList = especialidad.EspecialistaList
+                };
+            }
+            else 
+            {
+                return null;   
+            }         
         }
     }
 }

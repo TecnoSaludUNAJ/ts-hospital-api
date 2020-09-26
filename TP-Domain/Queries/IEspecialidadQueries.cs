@@ -11,9 +11,4 @@ namespace TP_Domain.Queries
         List<Especialidad> GetAllEspecialidades();
     }
 
-
-
-
-
-
 }

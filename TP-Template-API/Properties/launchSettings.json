@@ -12,9 +12,9 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/Hospitales",
+      //"launchUrl": "api/Hospitales",
      // "launchUrl": "api/Profesionales",
-     // "launchUrl": "api/Especialidades",
+      "launchUrl": "api/Especialidades",
       //"launchUrl": "api/Especialistas",
      // "launchUrl": "api/Hospitales",
     //  "launchUrl": "api/HospitalProfesional",

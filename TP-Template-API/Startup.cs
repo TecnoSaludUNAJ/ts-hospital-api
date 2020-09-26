@@ -19,6 +19,7 @@ using TP_Domain.Commands;
 using TP_AccessData.Commands;
 using TP_Domain.Queries;
 using TP_AccessData.Queries;
+using TP_Application.Services;
 
 namespace TP_Template_API
 {
@@ -52,6 +53,8 @@ namespace TP_Template_API
             //Injection dependences
             services.AddTransient<IGenericsRepository, GenericsRepository>();
             services.AddTransient<IEspecialidadQueries, EspecialidadQueries>();
+            services.AddTransient<IEspecialidadService, EspecialidadService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

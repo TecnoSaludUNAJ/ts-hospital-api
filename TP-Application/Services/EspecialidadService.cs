@@ -8,7 +8,15 @@ using TP_Domain.Queries;
 
 namespace TP_Application.Services
 {
-    public class EspecialidadService
+    public interface IEspecialidadService
+    {
+        Especialidad CreateEspecialidad(EspecialidadDto especialidad);
+        Especialidad GetEspecialidadById(int id);
+        List<Especialidad> GetAllEspecialidades();
+    }
+    
+    
+    public class EspecialidadService:IEspecialidadService
     {
         private readonly IGenericsRepository _repository;
         private readonly IEspecialidadQueries _query;

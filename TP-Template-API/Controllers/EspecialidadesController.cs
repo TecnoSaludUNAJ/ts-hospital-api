@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using TP_AccessData;
 using TP_Application.Services;
 using TP_Domain.DTOs;
@@ -16,9 +17,9 @@ namespace TP_Template_API.Controllers
     [ApiController]
     public class EspecialidadesController : ControllerBase
     {
-        private readonly EspecialidadService _service;
+        private readonly IEspecialidadService _service;
 
-        public EspecialidadesController(EspecialidadService service)
+        public EspecialidadesController(IEspecialidadService service)
         {
             _service = service;
         }
@@ -37,15 +38,16 @@ namespace TP_Template_API.Controllers
         }
         [HttpGet("{Id?}")]
         public IActionResult GetById(int Id)
-        {
-            try
+        {          
+            Especialidad esp = _service.GetEspecialidadById(Id);
+            if (esp != null)
             {
-                return new JsonResult(_service.GetEspecialidadById(Id)) { StatusCode = 200 };
+                return new JsonResult(esp) { StatusCode = 200 };
             }
-            catch (Exception e)
+            else
             {
-                return BadRequest(e.Message);
-            }
+                return BadRequest();
+            }                             
         }
 
         [HttpGet]
@@ -60,8 +62,5 @@ namespace TP_Template_API.Controllers
                 return BadRequest(e.Message);
             }
         }
-
-
-
     }
 }
