@@ -7,7 +7,7 @@ namespace TP_Domain.DTOs
 {
     public class ProfesionalConsultorioDto
     {
-        public Guid IdProfesionalConsultorio { get; set; }
+        public int Id { get; set; }
 
         //Foreign Keys
         public Consultorio Consultorio { get; set; }

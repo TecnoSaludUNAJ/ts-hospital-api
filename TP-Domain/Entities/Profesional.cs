@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace TP_Domain.Entities
 {
     public class Profesional
     {
-        public Guid IdProfesional { get; set; }
-        public int Dni { get; set; }
-        public string Matricula { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public DateTime FechaNacimiento { get; set; }
-        public string Sexo { get; set; }
-        public string Domicilio { get; set; }
-        public string Email { get; set; }
-        public string Telefono { get; set; }
+        public int Id { get; set; }
+        [Required] public int Dni { get; set; }
+        [Required] public string Matricula { get; set; }
+        [Required] public string Nombre { get; set; }
+        [Required] public string Apellido { get; set; }
+        [Required] public DateTime FechaNacimiento { get; set; }
+        [Required] public string Sexo { get; set; }
+        [Required] public string Domicilio { get; set; }
+        [Required] public string Email { get; set; }
+        [Required] public string Telefono { get; set; }
 
+        public List<ProfesionalConsultorio> ProfesionalConsultorioList { get; set; }
+        public List<HospitalProfesional> HospitalProfesionalList { get; set; }
+        public List<Especialista> EspecialistaList { get; set; }
     }
 }

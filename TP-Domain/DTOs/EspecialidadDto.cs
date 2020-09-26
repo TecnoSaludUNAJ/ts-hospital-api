@@ -6,7 +6,7 @@ namespace TP_Domain.DTOs
 {
     public class EspecialidadDto
     {
-        public Guid IdEspecialista { get; set; }
+        public int Id { get; set; }
         public string TipoEspecialidad { get; set; }
     }
 }

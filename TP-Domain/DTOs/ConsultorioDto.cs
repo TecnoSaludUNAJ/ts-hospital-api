@@ -6,6 +6,6 @@ namespace TP_Domain.DTOs
 {
     public class ConsultorioDto
     {
-        public Guid IdConsultorio { get; set; }
+        public int Id { get; set; }
     }
 }

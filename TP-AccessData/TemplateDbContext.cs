@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TP_Domain.Entities;
 
 namespace TP_AccessData
 {
@@ -11,8 +12,14 @@ namespace TP_AccessData
         {
 
         }
-        
-        
-        //dbsets
+
+        public DbSet<Consultorio> Consultorios { get; set; }
+        public DbSet<Especialidad> Especialidades { get; set; }
+        public DbSet<Especialista> Especialistas { get; set; }
+        public DbSet<Hospital> Hospitales { get; set; }
+        public DbSet<HospitalProfesional> HospitalProfesionalList { get; set; }
+        public DbSet<Profesional> Profesionales { get; set; }
+        public DbSet<ProfesionalConsultorio> ProfesionalConsultorioList { get; set; }
+
     }
 }

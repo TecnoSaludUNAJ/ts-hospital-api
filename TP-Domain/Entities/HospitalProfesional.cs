@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace TP_Domain.Entities
 {
     public class HospitalProfesional
     {
-        public Guid IdHospitalProfesional { get; set; }
+        public int Id { get; set; }
 
         //Foreign Key
         public Hospital Hospital { get; set; }

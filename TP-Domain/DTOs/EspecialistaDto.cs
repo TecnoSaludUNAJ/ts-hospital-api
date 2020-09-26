@@ -7,7 +7,7 @@ namespace TP_Domain.DTOs
 {
     public class EspecialistaDto
     {
-        public Guid IdEspecialista { get; set; }
+        public int Id { get; set; }
 
         //Foreign Key
         public Especialidad Especialidad { get; set; }

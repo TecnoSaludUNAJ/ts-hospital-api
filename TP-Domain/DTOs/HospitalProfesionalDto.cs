@@ -7,7 +7,7 @@ namespace TP_Domain.DTOs
 {
     public class HospitalProfesionalDto
     {
-        public Guid IdHospitalProfesional { get; set; }
+        public int Id { get; set; }
 
         //Foreign Key
         public Hospital Hospital { get; set; }
