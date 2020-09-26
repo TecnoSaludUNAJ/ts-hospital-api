@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TP_AccessData;
+using TP_Application.Services;
+using TP_Domain.DTOs;
 using TP_Domain.Entities;
 
 namespace TP_Template_API.Controllers
@@ -14,97 +16,49 @@ namespace TP_Template_API.Controllers
     [ApiController]
     public class HospitalesController : ControllerBase
     {
-        private readonly TemplateDbContext _context;
+        private readonly HospitalService _service;
 
-        public HospitalesController(TemplateDbContext context)
+        public HospitalesController(HospitalService service)
         {
-            _context = context;
+            _service = service;
         }
 
-        // GET: api/Hospitals
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Hospital>>> GetHospitales()
+        // POST: api/Hospitales      
+        [HttpPost]
+        public IActionResult PostHospital(HospitalDto hospital)
         {
-            return await _context.Hospitales.ToListAsync();
-        }
-
-        // GET: api/Hospitals/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Hospital>> GetHospital(int id)
-        {
-            var hospital = await _context.Hospitales.FindAsync(id);
-
-            if (hospital == null)
-            {
-                return NotFound();
-            }
-
-            return hospital;
-        }
-
-        // PUT: api/Hospitals/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutHospital(int id, Hospital hospital)
-        {
-            if (id != hospital.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(hospital).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+               return new JsonResult(_service.CreateHospital(hospital)) { StatusCode=201};            
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception)
             {
-                if (!HospitalExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+                return BadRequest();
+            }                   
         }
 
-        // POST: api/Hospitals
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<Hospital>> PostHospital(Hospital hospital)
+        //GET: api/Hospitales
+        [HttpGet]
+        public IActionResult GetHospitales()
         {
-            _context.Hospitales.Add(hospital);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetHospital", new { id = hospital.Id }, hospital);
-        }
-
-        // DELETE: api/Hospitals/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Hospital>> DeleteHospital(int id)
-        {
-            var hospital = await _context.Hospitales.FindAsync(id);
-            if (hospital == null)
+            try
             {
-                return NotFound();
+                return new JsonResult(_service) { StatusCode = 200 };
             }
-
-            _context.Hospitales.Remove(hospital);
-            await _context.SaveChangesAsync();
-
-            return hospital;
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
-        private bool HospitalExists(int id)
-        {
-            return _context.Hospitales.Any(e => e.Id == id);
-        }
+
+
+
+
+
+
+
+
+
     }
 }

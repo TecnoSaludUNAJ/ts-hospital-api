@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TP_AccessData;
+using TP_Application.Services;
+using TP_Domain.DTOs;
 using TP_Domain.Entities;
 
 namespace TP_Template_API.Controllers
@@ -14,97 +16,52 @@ namespace TP_Template_API.Controllers
     [ApiController]
     public class EspecialidadesController : ControllerBase
     {
-        private readonly TemplateDbContext _context;
+        private readonly EspecialidadService _service;
 
-        public EspecialidadesController(TemplateDbContext context)
+        public EspecialidadesController(EspecialidadService service)
         {
-            _context = context;
+            _service = service;
         }
 
-        // GET: api/Especialidades
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Especialidad>>> GetEspecialidades()
+        [HttpPost()]
+        public IActionResult Post(EspecialidadDto especialidad)
         {
-            return await _context.Especialidades.ToListAsync();
-        }
-
-        // GET: api/Especialidades/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Especialidad>> GetEspecialidad(int id)
-        {
-            var especialidad = await _context.Especialidades.FindAsync(id);
-
-            if (especialidad == null)
-            {
-                return NotFound();
-            }
-
-            return especialidad;
-        }
-
-        // PUT: api/Especialidades/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEspecialidad(int id, Especialidad especialidad)
-        {
-            if (id != especialidad.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(especialidad).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                return new JsonResult(_service.CreateEspecialidad(especialidad)) { StatusCode = 201 };
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
-                if (!EspecialidadExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest(e.Message);
             }
-
-            return NoContent();
         }
-
-        // POST: api/Especialidades
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<Especialidad>> PostEspecialidad(Especialidad especialidad)
+        [HttpGet("{Id?}")]
+        public IActionResult GetById(int Id)
         {
-            _context.Especialidades.Add(especialidad);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetEspecialidad", new { id = especialidad.Id }, especialidad);
-        }
-
-        // DELETE: api/Especialidades/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Especialidad>> DeleteEspecialidad(int id)
-        {
-            var especialidad = await _context.Especialidades.FindAsync(id);
-            if (especialidad == null)
+            try
             {
-                return NotFound();
+                return new JsonResult(_service.GetEspecialidadById(Id)) { StatusCode = 200 };
             }
-
-            _context.Especialidades.Remove(especialidad);
-            await _context.SaveChangesAsync();
-
-            return especialidad;
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
-        private bool EspecialidadExists(int id)
+        [HttpGet]
+        public IActionResult Getall()
         {
-            return _context.Especialidades.Any(e => e.Id == id);
+            try
+            {
+                return new JsonResult(_service.GetAllEspecialidades()) { StatusCode = 200 };
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
+
+
+
     }
 }

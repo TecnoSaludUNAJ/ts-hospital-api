@@ -9,13 +9,13 @@ namespace TP_Application.Services
 {
     public class HospitalService
     {
-        private readonly IGenericRepository _repository;
+        private readonly IGenericsRepository _repository;
 
-        public HospitalService(IGenericRepository repository)
+        public HospitalService(IGenericsRepository repository)
         {
             _repository = repository;
         }
-        public Hospital CreateEspecialistaService(HospitalDto hospital)
+        public Hospital CreateHospital(HospitalDto hospital)
         {
             var entity = new Hospital
             {
@@ -27,5 +27,7 @@ namespace TP_Application.Services
             _repository.Add<Hospital>(entity);
             return entity;
         }
+
+       
     }
 }

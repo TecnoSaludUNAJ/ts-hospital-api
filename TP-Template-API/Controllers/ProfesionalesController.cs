@@ -74,9 +74,7 @@ namespace TP_Template_API.Controllers
             return NoContent();
         }
 
-        // POST: api/Profesionales
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        // POST: api/Profesionales    
         [HttpPost]
         public async Task<ActionResult<Profesional>> PostProfesional(Profesional profesional)
         {

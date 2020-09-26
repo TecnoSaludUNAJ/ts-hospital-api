@@ -9,13 +9,13 @@ namespace TP_Application.Services
 {
     public class ProfesionalConsultorioService
     {
-        private readonly IGenericRepository _repository;
+        private readonly IGenericsRepository _repository;
 
-        public ProfesionalConsultorioService(IGenericRepository repository)
+        public ProfesionalConsultorioService(IGenericsRepository repository)
         {
             _repository = repository;
         }
-        public ProfesionalConsultorio CreateEspecialistaService(ProfesionalConsultorioDto profesionalconsultorio)
+        public ProfesionalConsultorio CreateProfesionalConsultorio(ProfesionalConsultorioDto profesionalconsultorio)
         {
             var entity = new ProfesionalConsultorio
             {

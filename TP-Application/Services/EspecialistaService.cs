@@ -9,14 +9,14 @@ namespace TP_Application.Services
 {
     public class EspecialistaService
     {
-        private readonly IGenericRepository _repository;
+        private readonly IGenericsRepository _repository;
 
-        public EspecialistaService(IGenericRepository repository)
+        public EspecialistaService(IGenericsRepository repository)
         {
             _repository = repository;
         }
 
-        public Especialista CreateEspecialistaService(EspecialistaDto especialista)
+        public Especialista CreateEspecialista(EspecialistaDto especialista)
         {
             var entity = new Especialista
             {

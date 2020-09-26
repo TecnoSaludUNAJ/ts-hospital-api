@@ -15,6 +15,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TP_AccessData;
 using SqlKata.Compilers;
+using TP_Domain.Commands;
+using TP_AccessData.Commands;
+using TP_Domain.Queries;
+using TP_AccessData.Queries;
 
 namespace TP_Template_API
 {
@@ -44,6 +48,10 @@ namespace TP_Template_API
             {
                 return new SqlConnection(connectionString);
             });
+            
+            //Injection dependences
+            services.AddTransient<IGenericsRepository, GenericsRepository>();
+            services.AddTransient<IEspecialidadQueries, EspecialidadQueries>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -9,14 +9,14 @@ namespace TP_Application.Services
 {
     public class ConsultorioService
     {
-        private readonly IGenericRepository _repository;
+        private readonly IGenericsRepository _repository;
 
-        public ConsultorioService(IGenericRepository repository)
+        public ConsultorioService(IGenericsRepository repository)
         {
             _repository = repository;
         }
 
-        public Consultorio CreateEspecialistaService(ConsultorioDto consultorio)
+        public Consultorio CreateConsultorio(ConsultorioDto consultorio)
         {
             var entity = new Consultorio
             {
