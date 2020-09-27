@@ -62,5 +62,22 @@ namespace TP_Template_API.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpGet("{Id?}/Especialistas")]
+        public IActionResult GetEspecialistasByEspecialidad(int id)
+        {
+            try
+            {
+                return new JsonResult(_service.GetEspecialistasByEspecialidad(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+        }
+
+
+
     }
 }

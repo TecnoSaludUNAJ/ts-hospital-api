@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TP_AccessData;
+using TP_Application.Services;
+using TP_Domain.DTOs;
 using TP_Domain.Entities;
 
 namespace TP_Template_API.Controllers
@@ -14,95 +16,54 @@ namespace TP_Template_API.Controllers
     [ApiController]
     public class ProfesionalesController : ControllerBase
     {
-        private readonly TemplateDbContext _context;
+        private readonly IProfesionalService _service;
 
-        public ProfesionalesController(TemplateDbContext context)
+        public ProfesionalesController(IProfesionalService service)
         {
-            _context = context;
+            _service = service;
         }
 
         // GET: api/Profesionales
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Profesional>>> GetProfesionales()
+        public IActionResult GetAll()
         {
-            return await _context.Profesionales.ToListAsync();
-        }
-
-        // GET: api/Profesionales/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Profesional>> GetProfesional(int id)
-        {
-            var profesional = await _context.Profesionales.FindAsync(id);
-
-            if (profesional == null)
+            try
             {
-                return NotFound();
+                return new JsonResult(_service.GetAllProfesionales()) { StatusCode=200};
             }
-
-            return profesional;
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
-        // PUT: api/Profesionales/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutProfesional(int id, Profesional profesional)
+        [HttpGet("{Id?}")]
+        public IActionResult GetById(int Id)
         {
-            if (id != profesional.Id)
+            Profesional prof = _service.GetProfesionalById(Id);
+            if (prof != null)
+            {
+                return new JsonResult(prof) { StatusCode = 200 };
+            }
+            else
             {
                 return BadRequest();
             }
+        }
 
-            _context.Entry(profesional).State = EntityState.Modified;
-
+        [HttpPost]
+        public IActionResult Post(ProfesionalDTO profesional)
+        {
             try
             {
-                await _context.SaveChangesAsync();
+                return new JsonResult(_service.CreateProfesional(profesional)) { StatusCode = 201 };
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
-                if (!ProfesionalExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest(e.Message);
             }
-
-            return NoContent();
         }
 
-        // POST: api/Profesionales    
-        [HttpPost]
-        public async Task<ActionResult<Profesional>> PostProfesional(Profesional profesional)
-        {
-            _context.Profesionales.Add(profesional);
-            await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProfesional", new { id = profesional.Id }, profesional);
-        }
-
-        // DELETE: api/Profesionales/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Profesional>> DeleteProfesional(int id)
-        {
-            var profesional = await _context.Profesionales.FindAsync(id);
-            if (profesional == null)
-            {
-                return NotFound();
-            }
-
-            _context.Profesionales.Remove(profesional);
-            await _context.SaveChangesAsync();
-
-            return profesional;
-        }
-
-        private bool ProfesionalExists(int id)
-        {
-            return _context.Profesionales.Any(e => e.Id == id);
-        }
     }
 }

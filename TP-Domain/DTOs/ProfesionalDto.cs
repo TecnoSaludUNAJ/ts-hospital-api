@@ -6,7 +6,6 @@ namespace TP_Domain.DTOs
 {
     public class ProfesionalDTO
     {
-        public int Id { get; set; }
         public int Dni { get; set; }
         public string Matricula { get; set; }
         public string Nombre { get; set; }

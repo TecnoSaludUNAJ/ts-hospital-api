@@ -13,6 +13,7 @@ namespace TP_Application.Services
         Especialidad CreateEspecialidad(EspecialidadDto especialidad);
         Especialidad GetEspecialidadById(int id);
         List<Especialidad> GetAllEspecialidades();
+        List<Especialista> GetEspecialistasByEspecialidad(int id);
     }
     
     
@@ -31,7 +32,6 @@ namespace TP_Application.Services
         {
             var entity = new Especialidad
             {
-                Id = especialidad.Id,
                 TipoEspecialidad=especialidad.TipoEspecialidad
             };
             _repository.Add<Especialidad>(entity);
@@ -47,5 +47,12 @@ namespace TP_Application.Services
         {
             return _query.GetAllEspecialidades();
         }
+
+        public List<Especialista> GetEspecialistasByEspecialidad(int id)
+        {
+            return _query.GetEspecialistasByEspecialidad(id);   
+        }
+
+
     }
 }

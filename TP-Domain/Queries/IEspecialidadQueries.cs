@@ -9,6 +9,7 @@ namespace TP_Domain.Queries
     {
         Especialidad GetEspecialidadById(int id);
         List<Especialidad> GetAllEspecialidades();
+        List<Especialista> GetEspecialistasByEspecialidad(int id);
     }
 
 }

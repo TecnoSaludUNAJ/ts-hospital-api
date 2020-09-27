@@ -54,7 +54,9 @@ namespace TP_Template_API
             services.AddTransient<IGenericsRepository, GenericsRepository>();
             services.AddTransient<IEspecialidadQueries, EspecialidadQueries>();
             services.AddTransient<IEspecialidadService, EspecialidadService>();
-
+            services.AddTransient<IProfesionalQueries, ProfesionalQueries>();
+            services.AddTransient<IProfesionalService , ProfesionalService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
