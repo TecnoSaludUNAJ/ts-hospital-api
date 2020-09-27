@@ -8,19 +8,20 @@ namespace TP_AccessData.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Consultorios",
+                name: "Consultorio",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Numero = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Consultorios", x => x.Id);
+                    table.PrimaryKey("PK_Consultorio", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Especialidades",
+                name: "Especialidad",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -29,11 +30,11 @@ namespace TP_AccessData.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Especialidades", x => x.Id);
+                    table.PrimaryKey("PK_Especialidad", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Hospitales",
+                name: "Hospital",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -44,11 +45,11 @@ namespace TP_AccessData.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Hospitales", x => x.Id);
+                    table.PrimaryKey("PK_Hospital", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Profesionales",
+                name: "Profesional",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -65,11 +66,11 @@ namespace TP_AccessData.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Profesionales", x => x.Id);
+                    table.PrimaryKey("PK_Profesional", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Especialistas",
+                name: "Especialista",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -79,23 +80,23 @@ namespace TP_AccessData.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Especialistas", x => x.Id);
+                    table.PrimaryKey("PK_Especialista", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Especialistas_Especialidades_EspecialidadId",
+                        name: "FK_Especialista_Especialidad_EspecialidadId",
                         column: x => x.EspecialidadId,
-                        principalTable: "Especialidades",
+                        principalTable: "Especialidad",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Especialistas_Profesionales_ProfesionalId",
+                        name: "FK_Especialista_Profesional_ProfesionalId",
                         column: x => x.ProfesionalId,
-                        principalTable: "Profesionales",
+                        principalTable: "Profesional",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HospitalProfesionalList",
+                name: "HospitalProfesional",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -105,23 +106,23 @@ namespace TP_AccessData.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HospitalProfesionalList", x => x.Id);
+                    table.PrimaryKey("PK_HospitalProfesional", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_HospitalProfesionalList_Hospitales_HospitalId",
+                        name: "FK_HospitalProfesional_Hospital_HospitalId",
                         column: x => x.HospitalId,
-                        principalTable: "Hospitales",
+                        principalTable: "Hospital",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_HospitalProfesionalList_Profesionales_ProfesionalId",
+                        name: "FK_HospitalProfesional_Profesional_ProfesionalId",
                         column: x => x.ProfesionalId,
-                        principalTable: "Profesionales",
+                        principalTable: "Profesional",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProfesionalConsultorioList",
+                name: "ProfesionalConsultorio",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -131,74 +132,96 @@ namespace TP_AccessData.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProfesionalConsultorioList", x => x.Id);
+                    table.PrimaryKey("PK_ProfesionalConsultorio", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProfesionalConsultorioList_Consultorios_ConsultorioId",
+                        name: "FK_ProfesionalConsultorio_Consultorio_ConsultorioId",
                         column: x => x.ConsultorioId,
-                        principalTable: "Consultorios",
+                        principalTable: "Consultorio",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ProfesionalConsultorioList_Profesionales_ProfesionalId",
+                        name: "FK_ProfesionalConsultorio_Profesional_ProfesionalId",
                         column: x => x.ProfesionalId,
-                        principalTable: "Profesionales",
+                        principalTable: "Profesional",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Consultorio",
+                columns: new[] { "Id", "Numero" },
+                values: new object[,]
+                {
+                    { 1, 101 },
+                    { 2, 102 },
+                    { 3, 103 },
+                    { 4, 104 },
+                    { 5, 201 },
+                    { 6, 202 },
+                    { 7, 203 },
+                    { 8, 204 },
+                    { 9, 301 },
+                    { 10, 302 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Hospital",
+                columns: new[] { "Id", "Direccion", "Nombre", "Telefono" },
+                values: new object[] { 1, "Av. San Martin 2134", "TecnoSaludUNAJ", "42574221" });
+
             migrationBuilder.CreateIndex(
-                name: "IX_Especialistas_EspecialidadId",
-                table: "Especialistas",
+                name: "IX_Especialista_EspecialidadId",
+                table: "Especialista",
                 column: "EspecialidadId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Especialistas_ProfesionalId",
-                table: "Especialistas",
+                name: "IX_Especialista_ProfesionalId",
+                table: "Especialista",
                 column: "ProfesionalId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HospitalProfesionalList_HospitalId",
-                table: "HospitalProfesionalList",
+                name: "IX_HospitalProfesional_HospitalId",
+                table: "HospitalProfesional",
                 column: "HospitalId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HospitalProfesionalList_ProfesionalId",
-                table: "HospitalProfesionalList",
+                name: "IX_HospitalProfesional_ProfesionalId",
+                table: "HospitalProfesional",
                 column: "ProfesionalId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProfesionalConsultorioList_ConsultorioId",
-                table: "ProfesionalConsultorioList",
+                name: "IX_ProfesionalConsultorio_ConsultorioId",
+                table: "ProfesionalConsultorio",
                 column: "ConsultorioId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProfesionalConsultorioList_ProfesionalId",
-                table: "ProfesionalConsultorioList",
+                name: "IX_ProfesionalConsultorio_ProfesionalId",
+                table: "ProfesionalConsultorio",
                 column: "ProfesionalId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Especialistas");
+                name: "Especialista");
 
             migrationBuilder.DropTable(
-                name: "HospitalProfesionalList");
+                name: "HospitalProfesional");
 
             migrationBuilder.DropTable(
-                name: "ProfesionalConsultorioList");
+                name: "ProfesionalConsultorio");
 
             migrationBuilder.DropTable(
-                name: "Especialidades");
+                name: "Especialidad");
 
             migrationBuilder.DropTable(
-                name: "Hospitales");
+                name: "Hospital");
 
             migrationBuilder.DropTable(
-                name: "Consultorios");
+                name: "Consultorio");
 
             migrationBuilder.DropTable(
-                name: "Profesionales");
+                name: "Profesional");
         }
     }
 }

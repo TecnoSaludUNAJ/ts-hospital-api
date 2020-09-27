@@ -26,9 +26,64 @@ namespace TP_AccessData.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Numero")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Consultorios");
+                    b.ToTable("Consultorio");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Numero = 101
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Numero = 102
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Numero = 103
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Numero = 104
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Numero = 201
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Numero = 202
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Numero = 203
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Numero = 204
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Numero = 301
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Numero = 302
+                        });
                 });
 
             modelBuilder.Entity("TP_Domain.Entities.Especialidad", b =>
@@ -44,7 +99,7 @@ namespace TP_AccessData.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Especialidades");
+                    b.ToTable("Especialidad");
                 });
 
             modelBuilder.Entity("TP_Domain.Entities.Especialista", b =>
@@ -66,7 +121,7 @@ namespace TP_AccessData.Migrations
 
                     b.HasIndex("ProfesionalId");
 
-                    b.ToTable("Especialistas");
+                    b.ToTable("Especialista");
                 });
 
             modelBuilder.Entity("TP_Domain.Entities.Hospital", b =>
@@ -90,7 +145,16 @@ namespace TP_AccessData.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Hospitales");
+                    b.ToTable("Hospital");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Direccion = "Av. San Martin 2134",
+                            Nombre = "TecnoSaludUNAJ",
+                            Telefono = "42574221"
+                        });
                 });
 
             modelBuilder.Entity("TP_Domain.Entities.HospitalProfesional", b =>
@@ -112,7 +176,7 @@ namespace TP_AccessData.Migrations
 
                     b.HasIndex("ProfesionalId");
 
-                    b.ToTable("HospitalProfesionalList");
+                    b.ToTable("HospitalProfesional");
                 });
 
             modelBuilder.Entity("TP_Domain.Entities.Profesional", b =>
@@ -158,7 +222,7 @@ namespace TP_AccessData.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Profesionales");
+                    b.ToTable("Profesional");
                 });
 
             modelBuilder.Entity("TP_Domain.Entities.ProfesionalConsultorio", b =>
@@ -180,7 +244,7 @@ namespace TP_AccessData.Migrations
 
                     b.HasIndex("ProfesionalId");
 
-                    b.ToTable("ProfesionalConsultorioList");
+                    b.ToTable("ProfesionalConsultorio");
                 });
 
             modelBuilder.Entity("TP_Domain.Entities.Especialista", b =>

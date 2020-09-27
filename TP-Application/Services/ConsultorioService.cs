@@ -20,8 +20,9 @@ namespace TP_Application.Services
         {
             var entity = new Consultorio
             {
-                Id = consultorio.Id,             
-            };
+                Id = consultorio.Id,
+               Numero=consultorio.Numero
+    };
             _repository.Add<Consultorio>(entity);
             return entity;
         }
