@@ -26,7 +26,7 @@ namespace TP_AccessData.Queries
         {
             var db=new QueryFactory(connection, sqlKataCompiler);
             
-            var query = db.Query("Especialidades").SelectRaw("*").From("Especialidades");
+            var query = db.Query("Especialidad").SelectRaw("*").From("Especialidad");
 
             var result = query.Get<Especialidad>();
 
@@ -37,7 +37,7 @@ namespace TP_AccessData.Queries
         public Especialidad GetEspecialidadById(int id)
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
-            var especialidad = db.Query("Especialidades").Select("Id", "TipoEspecialidad")
+            var especialidad = db.Query("Especialidad").Select("Id", "TipoEspecialidad")
                 .Where("Id", "=", id).FirstOrDefault<Especialidad>();
 
             if (especialidad != null)

@@ -25,7 +25,7 @@ namespace TP_AccessData.Queries
         public Profesional GetProfesionalById(int id)
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
-            var profesional = db.Query("Profesionales").Select("Id")
+            var profesional = db.Query("Profesional").Select("Id")
                 .Where("Id", "=", id).FirstOrDefault<Profesional>();
 
             if (profesional != null)
@@ -41,7 +41,7 @@ namespace TP_AccessData.Queries
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
 
-            var query = db.Query("Profesionales").SelectRaw("*").From("Profesionales");
+            var query = db.Query("Profesional").SelectRaw("*").From("Profesional");
 
             var result = query.Get<Profesional>();
 
