@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
+using TP_Domain.DTOs;
 using TP_Domain.Entities;
 using TP_Domain.Queries;
 
@@ -25,7 +27,7 @@ namespace TP_AccessData.Queries
         public Profesional GetProfesionalById(int id)
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
-            var profesional = db.Query("Profesional").Select("Id")
+            var profesional = db.Query("Profesional").SelectRaw("*")
                 .Where("Id", "=", id).FirstOrDefault<Profesional>();
 
             if (profesional != null)
@@ -37,15 +39,33 @@ namespace TP_AccessData.Queries
                 return null;
             }
         }
-        public List<Profesional> GetAllProfesionales()
+        public List<ProfesionalDto> GetAllProfesionales(int IdEspecialidad)
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
 
-            var query = db.Query("Profesional").SelectRaw("*").From("Profesional");
+            string id = IdEspecialidad.ToString();
 
-            var result = query.Get<Profesional>();
+            if (IdEspecialidad == 0)
+            {
+                var query = db.Query("Profesional");
+                var result = query.Get<ProfesionalDto>();
+                return result.ToList();
+            }
 
-            return result.ToList();
+            else 
+            {
+                var query = db.Query("Profesional")
+                    .SelectRaw("*")
+                    .Where("Especialista.EspecialidadId", "=", id )
+                    .Join("Especialista", "Profesional.Id", "Especialista.ProfesionalId")
+                    .Join("Especialidad","Especialidad.Id","Especialista.EspecialidadId");
+
+                
+                var result = query.Get<ProfesionalDto>();
+                return result.ToList();
+            }
+
+           
         }
     }
 }

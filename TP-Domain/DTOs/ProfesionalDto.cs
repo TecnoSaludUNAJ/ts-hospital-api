@@ -4,8 +4,9 @@ using System.Text;
 
 namespace TP_Domain.DTOs
 {
-    public class ProfesionalDTO
+    public class ProfesionalDto
     {
+        public int Id { get; set; }
         public int Dni { get; set; }
         public string Matricula { get; set; }
         public string Nombre { get; set; }

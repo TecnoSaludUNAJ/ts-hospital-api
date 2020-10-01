@@ -13,7 +13,8 @@ namespace TP_AccessData.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Numero = table.Column<int>(nullable: false)
+                    Numero = table.Column<int>(nullable: false),
+                    TurnosId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -75,8 +76,9 @@ namespace TP_AccessData.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EspecialidadId = table.Column<int>(nullable: true),
-                    ProfesionalId = table.Column<int>(nullable: true)
+                    EspecialidadId = table.Column<int>(nullable: false),
+                    ProfesionalId = table.Column<int>(nullable: false),
+                    CalendarioTurnos = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -86,13 +88,13 @@ namespace TP_AccessData.Migrations
                         column: x => x.EspecialidadId,
                         principalTable: "Especialidad",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Especialista_Profesional_ProfesionalId",
                         column: x => x.ProfesionalId,
                         principalTable: "Profesional",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -149,19 +151,19 @@ namespace TP_AccessData.Migrations
 
             migrationBuilder.InsertData(
                 table: "Consultorio",
-                columns: new[] { "Id", "Numero" },
+                columns: new[] { "Id", "Numero", "TurnosId" },
                 values: new object[,]
                 {
-                    { 1, 101 },
-                    { 2, 102 },
-                    { 3, 103 },
-                    { 4, 104 },
-                    { 5, 201 },
-                    { 6, 202 },
-                    { 7, 203 },
-                    { 8, 204 },
-                    { 9, 301 },
-                    { 10, 302 }
+                    { 1, 101, 0 },
+                    { 2, 102, 0 },
+                    { 3, 103, 0 },
+                    { 4, 104, 0 },
+                    { 5, 201, 0 },
+                    { 6, 202, 0 },
+                    { 7, 203, 0 },
+                    { 8, 204, 0 },
+                    { 9, 301, 0 },
+                    { 10, 302, 0 }
                 });
 
             migrationBuilder.InsertData(

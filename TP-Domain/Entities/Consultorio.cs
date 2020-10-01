@@ -11,6 +11,6 @@ namespace TP_Domain.Entities
         public int Numero { get; set; }
 
         public List<ProfesionalConsultorio> ProfesionalConsultorioList { get; set; }    
-        //Turnos
+        public int TurnosId { get; set; }
     }
 }

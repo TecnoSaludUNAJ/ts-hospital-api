@@ -14,7 +14,7 @@ namespace TP_Template_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HospitalesController : ControllerBase
+     class HospitalesController : ControllerBase
     {
         private readonly HospitalService _service;
 

@@ -10,10 +10,9 @@ namespace TP_Application.Services
 {
     public interface IEspecialidadService
     {
-        Especialidad CreateEspecialidad(EspecialidadDto especialidad);
+        EspecialidadDto CreateEspecialidad(EspecialidadDto especialidad);
         Especialidad GetEspecialidadById(int id);
-        List<Especialidad> GetAllEspecialidades();
-        List<Especialista> GetEspecialistasByEspecialidad(int id);
+        List<EspecialidadDto> GetAll();
     }
     
     
@@ -28,14 +27,20 @@ namespace TP_Application.Services
             _query = query;
         }
        
-        public Especialidad CreateEspecialidad(EspecialidadDto especialidad)
+        public EspecialidadDto CreateEspecialidad(EspecialidadDto especialidad)
         {
             var entity = new Especialidad
             {
                 TipoEspecialidad=especialidad.TipoEspecialidad
             };
             _repository.Add<Especialidad>(entity);
-            return entity;
+
+            return new EspecialidadDto
+            {
+                Id = entity.Id,
+                TipoEspecialidad = especialidad.TipoEspecialidad
+            };
+           
         }
 
         public Especialidad GetEspecialidadById(int id)
@@ -43,16 +48,9 @@ namespace TP_Application.Services
             return _query.GetEspecialidadById(id);
         }
 
-        public List<Especialidad> GetAllEspecialidades()
+        public List<EspecialidadDto> GetAll()
         {
             return _query.GetAllEspecialidades();
         }
-
-        public List<Especialista> GetEspecialistasByEspecialidad(int id)
-        {
-            return _query.GetEspecialistasByEspecialidad(id);   
-        }
-
-
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TP_Domain.DTOs;
 using TP_Domain.Entities;
 
 namespace TP_Domain.Queries
@@ -8,8 +9,7 @@ namespace TP_Domain.Queries
     public interface IEspecialidadQueries
     {
         Especialidad GetEspecialidadById(int id);
-        List<Especialidad> GetAllEspecialidades();
-        List<Especialista> GetEspecialistasByEspecialidad(int id);
+        List<EspecialidadDto> GetAllEspecialidades();       
     }
 
 }

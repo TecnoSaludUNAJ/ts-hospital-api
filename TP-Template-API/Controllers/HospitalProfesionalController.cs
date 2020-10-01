@@ -12,7 +12,7 @@ namespace TP_Template_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HospitalProfesionalController : ControllerBase
+     class HospitalProfesionalController : ControllerBase
     {
         private readonly TemplateDbContext _context;
 

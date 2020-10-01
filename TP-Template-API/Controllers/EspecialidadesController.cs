@@ -55,29 +55,12 @@ namespace TP_Template_API.Controllers
         {
             try
             {
-                return new JsonResult(_service.GetAllEspecialidades()) { StatusCode = 200 };
+                return new JsonResult(_service.GetAll()) { StatusCode = 200 };
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
         }
-
-        [HttpGet("{Id?}/Especialistas")]
-        public IActionResult GetEspecialistasByEspecialidad(int id)
-        {
-            try
-            {
-                return new JsonResult(_service.GetEspecialistasByEspecialidad(id));
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-
-        }
-
-
-
     }
 }

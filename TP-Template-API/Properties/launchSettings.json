@@ -12,17 +12,11 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      //"launchUrl": "api/Hospitales",
-      "launchUrl": "api/Profesionales",
-      //"launchUrl": "api/Especialidades",
-      //"launchUrl": "api/Especialistas",
-     // "launchUrl": "api/Hospitales",
-    //  "launchUrl": "api/HospitalProfesional",
-     // "launchUrl": "api/ProfesionalConsultorio",
+      "launchUrl": "Swagger",    
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
-    },
+    }
    
   }
 }

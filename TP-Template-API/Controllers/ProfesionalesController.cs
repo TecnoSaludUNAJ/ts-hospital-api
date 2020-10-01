@@ -25,11 +25,11 @@ namespace TP_Template_API.Controllers
 
         // GET: api/Profesionales
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll([FromQuery] int IdEspecialidad)
         {
             try
             {
-                return new JsonResult(_service.GetAllProfesionales()) { StatusCode=200};
+                return new JsonResult(_service.GetAll(IdEspecialidad)) { StatusCode=200};
             }
             catch (Exception e)
             {
@@ -52,7 +52,7 @@ namespace TP_Template_API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(ProfesionalDTO profesional)
+        public IActionResult Post(ProfesionalDto profesional)
         {
             try
             {

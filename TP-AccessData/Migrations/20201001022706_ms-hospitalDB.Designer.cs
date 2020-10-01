@@ -10,7 +10,7 @@ using TP_AccessData;
 namespace TP_AccessData.Migrations
 {
     [DbContext(typeof(TemplateDbContext))]
-    [Migration("20200927031743_ms-hospitalDB")]
+    [Migration("20201001022706_ms-hospitalDB")]
     partial class mshospitalDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,6 +31,9 @@ namespace TP_AccessData.Migrations
                     b.Property<int>("Numero")
                         .HasColumnType("int");
 
+                    b.Property<int>("TurnosId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Consultorio");
@@ -39,52 +42,62 @@ namespace TP_AccessData.Migrations
                         new
                         {
                             Id = 1,
-                            Numero = 101
+                            Numero = 101,
+                            TurnosId = 0
                         },
                         new
                         {
                             Id = 2,
-                            Numero = 102
+                            Numero = 102,
+                            TurnosId = 0
                         },
                         new
                         {
                             Id = 3,
-                            Numero = 103
+                            Numero = 103,
+                            TurnosId = 0
                         },
                         new
                         {
                             Id = 4,
-                            Numero = 104
+                            Numero = 104,
+                            TurnosId = 0
                         },
                         new
                         {
                             Id = 5,
-                            Numero = 201
+                            Numero = 201,
+                            TurnosId = 0
                         },
                         new
                         {
                             Id = 6,
-                            Numero = 202
+                            Numero = 202,
+                            TurnosId = 0
                         },
                         new
                         {
                             Id = 7,
-                            Numero = 203
+                            Numero = 203,
+                            TurnosId = 0
                         },
                         new
                         {
                             Id = 8,
-                            Numero = 204
+                            Numero = 204,
+                            TurnosId = 0
                         },
                         new
                         {
                             Id = 9,
-                            Numero = 301
+                            Numero = 301,
+                            TurnosId = 0
                         },
                         new
                         {
                             Id = 10,
-                            Numero = 302
+                            Numero = 302,
+                            TurnosId = 0
                         });
                 });
 
@@ -111,10 +124,13 @@ namespace TP_AccessData.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("EspecialidadId")
+                    b.Property<int>("CalendarioTurnos")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProfesionalId")
+                    b.Property<int>("EspecialidadId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProfesionalId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -253,11 +269,15 @@ namespace TP_AccessData.Migrations
                 {
                     b.HasOne("TP_Domain.Entities.Especialidad", "Especialidad")
                         .WithMany("EspecialistaList")
-                        .HasForeignKey("EspecialidadId");
+                        .HasForeignKey("EspecialidadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TP_Domain.Entities.Profesional", "Profesional")
                         .WithMany("EspecialistaList")
-                        .HasForeignKey("ProfesionalId");
+                        .HasForeignKey("ProfesionalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TP_Domain.Entities.HospitalProfesional", b =>
