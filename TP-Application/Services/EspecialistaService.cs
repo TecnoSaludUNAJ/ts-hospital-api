@@ -3,6 +3,8 @@ using TP_Domain.DTOs;
 using TP_Domain.Entities;
 using System.Linq;
 using TP_Domain.Queries;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace TP_Application.Services
 {
@@ -28,18 +30,14 @@ namespace TP_Application.Services
         public Especialista CreateEspecialista(EspecialistaDto especialista)
         {
 
-            Especialidad especialidad = _queryEspecialidad.GetEspecialidadById(especialista.EspecialidadId);
-            Profesional profesional = _queryProfesional.GetProfesionalById(especialista.ProfesionalId);
-
-            var entity = new Especialista
+            Especialista esp = new Especialista
             {
-                Profesional = profesional,
-                Especialidad = especialidad,
-                CalendarioTurnos = 64,
-                Id = especialidad.Id
+                EspecialidadId = especialista.EspecialidadId,
+                ProfesionalId = especialista.ProfesionalId
             };
-            _repository.Add<Especialista>(entity);
-            return entity;
+            _repository.Add<Especialista>(esp);
+            return esp;
         }
+       
     }
 }
