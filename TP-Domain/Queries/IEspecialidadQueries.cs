@@ -8,8 +8,8 @@ namespace TP_Domain.Queries
 {
     public interface IEspecialidadQueries
     {
-        Especialidad GetEspecialidadById(int id);
-        List<EspecialidadDto> GetAllEspecialidades();       
+        ResponseEspecialidad GetEspecialidadById(int id);
+        List<ResponseEspecialidad> GetAllEspecialidades();       
     }
 
 }

@@ -23,23 +23,23 @@ namespace TP_AccessData.Queries
             this.sqlKataCompiler = sqlKataCompiler;
         }
 
-        public List<EspecialidadDto> GetAllEspecialidades()
+        public List<ResponseEspecialidad> GetAllEspecialidades()
         {
             var db=new QueryFactory(connection, sqlKataCompiler);
 
             var query = db.Query("Especialidad").SelectRaw("*");
 
-            var result = query.Get<EspecialidadDto>();
+            var result = query.Get<ResponseEspecialidad>();
 
             return result.ToList();
 
         }
 
-        public Especialidad GetEspecialidadById(int id)
+        public ResponseEspecialidad GetEspecialidadById(int id)
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
             var especialidad = db.Query("Especialidad").Select("Id", "TipoEspecialidad")
-                .Where("Id", "=", id).FirstOrDefault<Especialidad>();
+                .Where("Id", "=", id).FirstOrDefault<ResponseEspecialidad>();
          
                 return especialidad;                        
         }      

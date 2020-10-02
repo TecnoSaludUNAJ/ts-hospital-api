@@ -38,8 +38,8 @@ namespace TP_Template_API.Controllers
         }
         [HttpGet("{Id?}")]
         public IActionResult GetById(int Id)
-        {          
-            Especialidad esp = _service.GetEspecialidadById(Id);
+        {
+            ResponseEspecialidad esp = _service.GetById(Id);
             if (esp != null)
             {
                 return new JsonResult(esp) { StatusCode = 200 };
