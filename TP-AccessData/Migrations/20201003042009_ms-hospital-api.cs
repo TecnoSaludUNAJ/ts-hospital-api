@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TP_AccessData.Migrations
 {
-    public partial class mshospitalDB : Migration
+    public partial class mshospitalapi : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -103,8 +103,8 @@ namespace TP_AccessData.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    HospitalId = table.Column<int>(nullable: true),
-                    ProfesionalId = table.Column<int>(nullable: true)
+                    HospitalId = table.Column<int>(nullable: false),
+                    ProfesionalId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -114,13 +114,13 @@ namespace TP_AccessData.Migrations
                         column: x => x.HospitalId,
                         principalTable: "Hospital",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_HospitalProfesional_Profesional_ProfesionalId",
                         column: x => x.ProfesionalId,
                         principalTable: "Profesional",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -129,8 +129,8 @@ namespace TP_AccessData.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ConsultorioId = table.Column<int>(nullable: true),
-                    ProfesionalId = table.Column<int>(nullable: true)
+                    ConsultorioId = table.Column<int>(nullable: false),
+                    ProfesionalId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -140,13 +140,13 @@ namespace TP_AccessData.Migrations
                         column: x => x.ConsultorioId,
                         principalTable: "Consultorio",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ProfesionalConsultorio_Profesional_ProfesionalId",
                         column: x => x.ProfesionalId,
                         principalTable: "Profesional",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(

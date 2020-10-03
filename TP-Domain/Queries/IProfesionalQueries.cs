@@ -8,7 +8,7 @@ namespace TP_Domain.Queries
 {
     public interface IProfesionalQueries
     {
-        Profesional GetProfesionalById(int id);
-        List<ProfesionalDto> GetAllProfesionales(int IdEspecialidad);
+        ResponseProfesional GetProfesionalById(int id);
+        List<ResponseProfesional> GetAllProfesionales(int IdEspecialidad);
     }
 }

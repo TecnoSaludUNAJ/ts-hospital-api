@@ -40,7 +40,7 @@ namespace TP_Template_API.Controllers
         [HttpGet("{Id?}")]
         public IActionResult GetById(int Id)
         {
-            Profesional prof = _service.GetProfesionalById(Id);
+            ResponseProfesional prof = _service.GetProfesionalById(Id);
             if (prof != null)
             {
                 return new JsonResult(prof) { StatusCode = 200 };

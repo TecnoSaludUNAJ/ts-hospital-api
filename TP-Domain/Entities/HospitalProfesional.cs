@@ -11,6 +11,8 @@ namespace TP_Domain.Entities
 
         //Foreign Key
         public Hospital Hospital { get; set; }
+        public int HospitalId { get; set; }
         public Profesional Profesional { get; set; }
+        public int ProfesionalId { get; set; }
     }
 }

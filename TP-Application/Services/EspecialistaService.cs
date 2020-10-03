@@ -11,7 +11,7 @@ namespace TP_Application.Services
 
     public interface IEspecialistaService
     {
-        Especialista CreateEspecialista(EspecialistaDto especialista);
+        EspecialistaDto CreateEspecialista(EspecialistaDto especialista);
     }
     
     public class EspecialistaService:IEspecialistaService
@@ -27,7 +27,7 @@ namespace TP_Application.Services
             _queryProfesional = queryProfesional;
         }
 
-        public Especialista CreateEspecialista(EspecialistaDto especialista)
+        public EspecialistaDto CreateEspecialista(EspecialistaDto especialista)
         {
 
             Especialista esp = new Especialista
@@ -36,7 +36,11 @@ namespace TP_Application.Services
                 ProfesionalId = especialista.ProfesionalId
             };
             _repository.Add<Especialista>(esp);
-            return esp;
+            return new EspecialistaDto 
+            {
+                EspecialidadId=esp.EspecialidadId,
+                ProfesionalId=esp.ProfesionalId              
+            };
         }
        
     }

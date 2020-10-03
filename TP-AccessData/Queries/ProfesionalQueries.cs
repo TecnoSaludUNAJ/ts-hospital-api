@@ -24,11 +24,11 @@ namespace TP_AccessData.Queries
             this.sqlKataCompiler = sqlKataCompiler;
         }
 
-        public Profesional GetProfesionalById(int id)
+        public ResponseProfesional GetProfesionalById(int id)
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
             var profesional = db.Query("Profesional").SelectRaw("*")
-                .Where("Id", "=", id).FirstOrDefault<Profesional>();
+                .Where("Id", "=", id).FirstOrDefault<ResponseProfesional>();
 
             if (profesional != null)
             {
@@ -39,7 +39,7 @@ namespace TP_AccessData.Queries
                 return null;
             }
         }
-        public List<ProfesionalDto> GetAllProfesionales(int IdEspecialidad)
+        public List<ResponseProfesional> GetAllProfesionales(int IdEspecialidad)
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
 
@@ -48,7 +48,7 @@ namespace TP_AccessData.Queries
             if (IdEspecialidad == 0)
             {
                 var query = db.Query("Profesional");
-                var result = query.Get<ProfesionalDto>();
+                var result = query.Get<ResponseProfesional>();
                 return result.ToList();
             }
 
@@ -61,7 +61,7 @@ namespace TP_AccessData.Queries
                     .Join("Especialidad","Especialidad.Id","Especialista.EspecialidadId");
 
                 
-                var result = query.Get<ProfesionalDto>();
+                var result = query.Get<ResponseProfesional>();
                 return result.ToList();
             }
 

@@ -180,10 +180,10 @@ namespace TP_AccessData.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("HospitalId")
+                    b.Property<int>("HospitalId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProfesionalId")
+                    b.Property<int>("ProfesionalId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -248,10 +248,10 @@ namespace TP_AccessData.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ConsultorioId")
+                    b.Property<int>("ConsultorioId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProfesionalId")
+                    b.Property<int>("ProfesionalId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -266,13 +266,13 @@ namespace TP_AccessData.Migrations
             modelBuilder.Entity("TP_Domain.Entities.Especialista", b =>
                 {
                     b.HasOne("TP_Domain.Entities.Especialidad", "Especialidad")
-                        .WithMany("EspecialistaList")
+                        .WithMany("EspecialistaNavigator")
                         .HasForeignKey("EspecialidadId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TP_Domain.Entities.Profesional", "Profesional")
-                        .WithMany("EspecialistaList")
+                        .WithMany("EspecialistaNavigator")
                         .HasForeignKey("ProfesionalId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -281,23 +281,31 @@ namespace TP_AccessData.Migrations
             modelBuilder.Entity("TP_Domain.Entities.HospitalProfesional", b =>
                 {
                     b.HasOne("TP_Domain.Entities.Hospital", "Hospital")
-                        .WithMany("HospitalProfesionalList")
-                        .HasForeignKey("HospitalId");
+                        .WithMany("HospitalProfesionalNavigator")
+                        .HasForeignKey("HospitalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TP_Domain.Entities.Profesional", "Profesional")
-                        .WithMany("HospitalProfesionalList")
-                        .HasForeignKey("ProfesionalId");
+                        .WithMany("HospitalProfesionalNavigator")
+                        .HasForeignKey("ProfesionalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TP_Domain.Entities.ProfesionalConsultorio", b =>
                 {
                     b.HasOne("TP_Domain.Entities.Consultorio", "Consultorio")
                         .WithMany("ProfesionalConsultorioList")
-                        .HasForeignKey("ConsultorioId");
+                        .HasForeignKey("ConsultorioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TP_Domain.Entities.Profesional", "Profesional")
-                        .WithMany("ProfesionalConsultorioList")
-                        .HasForeignKey("ProfesionalId");
+                        .WithMany("ProfesionalConsultorioNavigator")
+                        .HasForeignKey("ProfesionalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

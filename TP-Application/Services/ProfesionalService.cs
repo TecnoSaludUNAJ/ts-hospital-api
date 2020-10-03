@@ -11,8 +11,8 @@ namespace TP_Application.Services
     public interface IProfesionalService
     {
         ResponseProfesional CreateProfesional(ProfesionalDto profesional);
-        Profesional GetProfesionalById(int id);
-        List<ProfesionalDto> GetAll(int IdEspecialidad);
+        ResponseProfesional GetProfesionalById(int id);
+        List<ResponseProfesional> GetAll(int IdEspecialidad);
     }      
     
     public class ProfesionalService:IProfesionalService
@@ -45,19 +45,20 @@ namespace TP_Application.Services
             _repository.Add<Profesional>(entity);
           
             return new ResponseProfesional
-            {                 
+            {                              
+                EspecialidadId=entity.Id,
                 Matricula=profesional.Matricula,
                 Nombre=profesional.Nombre,
                 Apellido=profesional.Apellido      
             };
         }     
 
-        public List<ProfesionalDto> GetAll(int IdEspecialidad)
+        public List<ResponseProfesional> GetAll(int IdEspecialidad)
         {
             return _query.GetAllProfesionales(IdEspecialidad);
         }
 
-        public Profesional GetProfesionalById(int id)
+        public ResponseProfesional GetProfesionalById(int id)
         {
             return _query.GetProfesionalById(id);
         }

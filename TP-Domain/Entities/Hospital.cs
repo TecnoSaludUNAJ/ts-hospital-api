@@ -12,6 +12,6 @@ namespace TP_Domain.Entities
         [Required] public string Direccion { get; set; }
         [Required] public string Telefono { get; set; }
 
-        public List<HospitalProfesional> HospitalProfesionalList { get; set; }
+        public List<HospitalProfesional> HospitalProfesionalNavigator { get; set; }
     }
 }

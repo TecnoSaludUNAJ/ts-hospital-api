@@ -10,7 +10,7 @@ namespace TP_Domain.Entities
         public int Id { get; set; }
         [Required] public string TipoEspecialidad { get; set; }
 
-        public List<Especialista> EspecialistaList { get; set; }
+        public List<Especialista> EspecialistaNavigator { get; set; }
 
     }
 }

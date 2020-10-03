@@ -18,8 +18,8 @@ namespace TP_Domain.Entities
         [Required] public string Email { get; set; }
         [Required] public string Telefono { get; set; }
 
-        public List<ProfesionalConsultorio> ProfesionalConsultorioList { get; set; }
-        public List<HospitalProfesional> HospitalProfesionalList { get; set; }
-        public List<Especialista> EspecialistaList { get; set; }
+        public List<ProfesionalConsultorio> ProfesionalConsultorioNavigator { get; set; }
+        public List<HospitalProfesional> HospitalProfesionalNavigator { get; set; }
+        public List<Especialista> EspecialistaNavigator { get; set; }
     }
 }
