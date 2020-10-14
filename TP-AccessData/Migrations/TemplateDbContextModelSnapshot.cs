@@ -206,8 +206,9 @@ namespace TP_AccessData.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Dni")
-                        .HasColumnType("int");
+                    b.Property<string>("Dni")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Domicilio")
                         .IsRequired()

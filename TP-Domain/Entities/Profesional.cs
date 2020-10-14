@@ -8,7 +8,7 @@ namespace TP_Domain.Entities
     public class Profesional
     {
         public int Id { get; set; }
-        [Required] public int Dni { get; set; }
+        [Required] public string Dni { get; set; }
         [Required] public string Matricula { get; set; }
         [Required] public string Nombre { get; set; }
         [Required] public string Apellido { get; set; }

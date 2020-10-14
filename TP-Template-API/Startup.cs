@@ -57,6 +57,10 @@ namespace TP_Template_API
             services.AddTransient<IProfesionalQueries, ProfesionalQueries>();
             services.AddTransient<IProfesionalService , ProfesionalService>();
             services.AddTransient<IEspecialistaService, EspecialistaService>();
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,6 +74,7 @@ namespace TP_Template_API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TP_AccessData.Migrations
 {
-    public partial class mshospitalapi : Migration
+    public partial class mshospitalDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -55,7 +55,7 @@ namespace TP_AccessData.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Dni = table.Column<int>(nullable: false),
+                    Dni = table.Column<string>(nullable: false),
                     Matricula = table.Column<string>(nullable: false),
                     Nombre = table.Column<string>(nullable: false),
                     Apellido = table.Column<string>(nullable: false),

@@ -56,7 +56,7 @@ namespace TP_AccessData.Queries
             {
                 var query = db.Query("Profesional")
                     .SelectRaw("*")
-                    .Where("Especialista.EspecialidadId", "=", id )
+                    .Where("Especialista.EspecialidadId", "=", id)
                     .Join("Especialista", "Profesional.Id", "Especialista.ProfesionalId")
                     .Join("Especialidad","Especialidad.Id","Especialista.EspecialidadId");
 
