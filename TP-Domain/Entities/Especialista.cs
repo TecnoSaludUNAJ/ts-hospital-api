@@ -11,8 +11,9 @@ namespace TP_Domain.Entities
 
         //Foreign Key
         public Especialidad Especialidad { get; set; }
-        public Profesional Profesional { get; set; }
         public int EspecialidadId { get; set; }
+        
+        public Profesional Profesional { get; set; }  
         public int ProfesionalId { get; set; }
 
         public int CalendarioTurnos {get;set;}

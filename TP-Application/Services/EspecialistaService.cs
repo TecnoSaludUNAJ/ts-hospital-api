@@ -33,13 +33,15 @@ namespace TP_Application.Services
             Especialista esp = new Especialista
             {
                 EspecialidadId = especialista.EspecialidadId,
-                ProfesionalId = especialista.ProfesionalId
+                ProfesionalId = especialista.ProfesionalId,
+                CalendarioTurnos=especialista.CalendarioTurnos
             };
             _repository.Add<Especialista>(esp);
             return new EspecialistaDto 
             {
                 EspecialidadId=esp.EspecialidadId,
-                ProfesionalId=esp.ProfesionalId              
+                ProfesionalId=esp.ProfesionalId,
+                CalendarioTurnos = esp.CalendarioTurnos
             };
         }
        

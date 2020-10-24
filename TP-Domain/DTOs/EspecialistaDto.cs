@@ -9,5 +9,6 @@ namespace TP_Domain.DTOs
     {
         public int ProfesionalId { get; set; }
         public int EspecialidadId { get; set; }
+        public int CalendarioTurnos { get; set; }
     }
 }
