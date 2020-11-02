@@ -1,12 +1,9 @@
 ﻿using SqlKata.Compilers;
 using SqlKata.Execution;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
 using TP_Domain.DTOs;
-using TP_Domain.Entities;
 using TP_Domain.Queries;
 
 
@@ -25,9 +22,9 @@ namespace TP_AccessData.Queries
 
         public List<ResponseEspecialidad> GetAllEspecialidades()
         {
-            var db=new QueryFactory(connection, sqlKataCompiler);
+            var db = new QueryFactory(connection, sqlKataCompiler);
 
-            var query = db.Query("Especialidad").SelectRaw("*");
+            var query = db.Query("Especialidad");
 
             var result = query.Get<ResponseEspecialidad>();
 
@@ -40,8 +37,8 @@ namespace TP_AccessData.Queries
             var db = new QueryFactory(connection, sqlKataCompiler);
             var especialidad = db.Query("Especialidad").Select("Id", "TipoEspecialidad")
                 .Where("Id", "=", id).FirstOrDefault<ResponseEspecialidad>();
-         
-                return especialidad;                        
-        }      
+
+            return especialidad;
+        }
     }
 }

@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
-using TP_AccessData;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using TP_Application.Services;
 using TP_Domain.DTOs;
-using TP_Domain.Entities;
 
 namespace TP_Template_API.Controllers
 {
@@ -39,15 +31,21 @@ namespace TP_Template_API.Controllers
         [HttpGet("{Id?}")]
         public IActionResult GetById(int Id)
         {
-            ResponseEspecialidad esp = _service.GetById(Id);
-            if (esp != null)
+            try
             {
-                return new JsonResult(esp) { StatusCode = 200 };
+                ResponseEspecialidad esp = _service.GetById(Id);
+                if (esp != null)
+                {
+                    return new JsonResult(esp) { StatusCode = 200 };
+                }
+                else {
+                    return NotFound();
+                }
             }
-            else
+            catch (Exception)
             {
-                return BadRequest();
-            }                             
+                return NotFound();
+            }         
         }
 
         [HttpGet]

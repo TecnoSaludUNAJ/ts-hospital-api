@@ -1,10 +1,7 @@
 ﻿using TP_Domain.Commands;
 using TP_Domain.DTOs;
 using TP_Domain.Entities;
-using System.Linq;
 using TP_Domain.Queries;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace TP_Application.Services
 {
@@ -13,8 +10,8 @@ namespace TP_Application.Services
     {
         EspecialistaDto CreateEspecialista(EspecialistaDto especialista);
     }
-    
-    public class EspecialistaService:IEspecialistaService
+
+    public class EspecialistaService : IEspecialistaService
     {
         private readonly IGenericsRepository _repository;
         private readonly IEspecialidadQueries _queryEspecialidad;
@@ -34,16 +31,16 @@ namespace TP_Application.Services
             {
                 EspecialidadId = especialista.EspecialidadId,
                 ProfesionalId = especialista.ProfesionalId,
-                CalendarioTurnos=especialista.CalendarioTurnos
+                CalendarioTurnos = especialista.CalendarioTurnos
             };
             _repository.Add<Especialista>(esp);
-            return new EspecialistaDto 
+            return new EspecialistaDto
             {
-                EspecialidadId=esp.EspecialidadId,
-                ProfesionalId=esp.ProfesionalId,
+                EspecialidadId = esp.EspecialidadId,
+                ProfesionalId = esp.ProfesionalId,
                 CalendarioTurnos = esp.CalendarioTurnos
             };
         }
-       
+
     }
 }

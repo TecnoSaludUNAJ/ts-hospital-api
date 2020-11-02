@@ -1,13 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using TP_Domain.Entities;
 
 namespace TP_AccessData
 {
-   public class TemplateDbContext : DbContext
+    public class TemplateDbContext : DbContext
     {
         public TemplateDbContext(DbContextOptions<TemplateDbContext> options) : base(options)
         {
@@ -33,15 +30,15 @@ namespace TP_AccessData
             {
                 Id = 1,
                 Nombre = "TecnoSaludUNAJ",
-                Direccion="Av. San Martin 2134",
-                Telefono="42574221"
+                Direccion = "Av. San Martin 2134",
+                Telefono = "42574221"
             });
 
             builder.Entity<Consultorio>().HasData(
-                new Consultorio{Id = 1,Numero=101}, new Consultorio { Id = 2, Numero = 102 }, new Consultorio { Id = 3, Numero = 103 }
-                , new Consultorio { Id = 4, Numero = 104 },new Consultorio { Id = 5, Numero = 201 }, new Consultorio { Id = 6, Numero = 202 }, new Consultorio { Id = 7, Numero = 203 },
-                new Consultorio { Id = 8, Numero = 204 },new Consultorio { Id = 9, Numero = 301 }, new Consultorio { Id = 10, Numero =302 }
-                );;
+                new Consultorio { Id = 1, Numero = 101 }, new Consultorio { Id = 2, Numero = 102 }, new Consultorio { Id = 3, Numero = 103 }
+                , new Consultorio { Id = 4, Numero = 104 }, new Consultorio { Id = 5, Numero = 201 }, new Consultorio { Id = 6, Numero = 202 }, new Consultorio { Id = 7, Numero = 203 },
+                new Consultorio { Id = 8, Numero = 204 }, new Consultorio { Id = 9, Numero = 301 }, new Consultorio { Id = 10, Numero = 302 }
+                ); ;
         }
     }
 }

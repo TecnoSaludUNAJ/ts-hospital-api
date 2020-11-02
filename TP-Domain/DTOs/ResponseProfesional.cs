@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TP_Domain.DTOs
+﻿namespace TP_Domain.DTOs
 {
     public class ResponseProfesional
     {
+        public int Id { get; set; }
         public int EspecialidadId { get; set; }
         public string Matricula { get; set; }
         public string Nombre { get; set; }

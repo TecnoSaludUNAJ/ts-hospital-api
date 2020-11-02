@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TP_Domain.DTOs
+﻿namespace TP_Domain.DTOs
 {
     public class ResponseEspecialidad
     {

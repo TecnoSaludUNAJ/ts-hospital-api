@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using TP_Domain.Commands;
 using TP_Domain.DTOs;
 using TP_Domain.Entities;
@@ -14,9 +12,9 @@ namespace TP_Application.Services
         ResponseEspecialidad GetById(int id);
         List<ResponseEspecialidad> GetAll();
     }
-    
-    
-    public class EspecialidadService:IEspecialidadService
+
+
+    public class EspecialidadService : IEspecialidadService
     {
         private readonly IGenericsRepository _repository;
         private readonly IEspecialidadQueries _query;
@@ -26,12 +24,12 @@ namespace TP_Application.Services
             _repository = repository;
             _query = query;
         }
-       
+
         public ResponseEspecialidad CreateEspecialidad(EspecialidadDto especialidad)
         {
             var entity = new Especialidad
             {
-                TipoEspecialidad=especialidad.TipoEspecialidad
+                TipoEspecialidad = especialidad.TipoEspecialidad
             };
             _repository.Add<Especialidad>(entity);
 
@@ -40,7 +38,7 @@ namespace TP_Application.Services
                 Id = entity.Id,
                 TipoEspecialidad = especialidad.TipoEspecialidad
             };
-           
+
         }
 
         public ResponseEspecialidad GetById(int id)

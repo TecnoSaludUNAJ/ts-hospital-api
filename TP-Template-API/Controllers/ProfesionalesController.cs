@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using TP_AccessData;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using TP_Application.Services;
 using TP_Domain.DTOs;
-using TP_Domain.Entities;
 
 namespace TP_Template_API.Controllers
 {
@@ -29,26 +22,34 @@ namespace TP_Template_API.Controllers
         {
             try
             {
-                return new JsonResult(_service.GetAll(IdEspecialidad)) { StatusCode=200};
+                return new JsonResult(_service.GetAll(IdEspecialidad)) { StatusCode = 200 };
             }
-            catch (Exception e)
+            catch
             {
-                return BadRequest(e.Message);
+                return BadRequest();
             }
         }
 
         [HttpGet("{Id?}")]
         public IActionResult GetById(int Id)
         {
-            ResponseProfesional prof = _service.GetProfesionalById(Id);
-            if (prof != null)
+            try
             {
-                return new JsonResult(prof) { StatusCode = 200 };
+                ResponseProfesional prof = _service.GetProfesionalById(Id);
+                if (prof != null)
+                {
+                    return new JsonResult(prof) { StatusCode = 200 };
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
-            else
+            catch
             {
-                return BadRequest();
+                return NotFound();
             }
+           
         }
 
         [HttpPost]

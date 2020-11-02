@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using TP_AccessData;
 using TP_Application.Services;
 using TP_Domain.DTOs;
@@ -16,11 +16,11 @@ namespace TP_Template_API.Controllers
         {
             _service = service;
         }
-      
+
         // POST: api/Especialistas
         [HttpPost]
-        public  IActionResult PostEspecialista(EspecialistaDto especialista)
-        {        
+        public IActionResult PostEspecialista(EspecialistaDto especialista)
+        {
             try
             {
                 return new JsonResult(_service.CreateEspecialista(especialista)) { StatusCode = 201 };
@@ -30,6 +30,6 @@ namespace TP_Template_API.Controllers
                 return BadRequest(e.Message);
             }
         }
-        
+
     }
 }

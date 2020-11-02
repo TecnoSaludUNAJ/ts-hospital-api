@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using TP_Domain.Commands;
 using TP_Domain.DTOs;
 using TP_Domain.Entities;
@@ -13,9 +11,9 @@ namespace TP_Application.Services
         ResponseProfesional CreateProfesional(ProfesionalDto profesional);
         ResponseProfesional GetProfesionalById(int id);
         List<ResponseProfesional> GetAll(int IdEspecialidad);
-    }      
-    
-    public class ProfesionalService:IProfesionalService
+    }
+
+    public class ProfesionalService : IProfesionalService
     {
         private readonly IGenericsRepository _repository;
         private readonly IProfesionalQueries _query;
@@ -30,9 +28,8 @@ namespace TP_Application.Services
         {
             var entity = new Profesional
             {
-                
-                Dni=profesional.Dni,
-                Matricula=profesional.Matricula,
+                Dni = profesional.Dni,
+                Matricula = profesional.Matricula,
                 Nombre = profesional.Nombre,
                 Apellido = profesional.Apellido,
                 FechaNacimiento = profesional.FechaNacimiento,
@@ -43,15 +40,15 @@ namespace TP_Application.Services
 
             };
             _repository.Add<Profesional>(entity);
-          
+
             return new ResponseProfesional
-            {                              
-                EspecialidadId=entity.Id,
-                Matricula=profesional.Matricula,
-                Nombre=profesional.Nombre,
-                Apellido=profesional.Apellido      
+            {
+                Id = entity.Id,
+                Matricula = profesional.Matricula,
+                Nombre = profesional.Nombre,
+                Apellido = profesional.Apellido
             };
-        }     
+        }
 
         public List<ResponseProfesional> GetAll(int IdEspecialidad)
         {

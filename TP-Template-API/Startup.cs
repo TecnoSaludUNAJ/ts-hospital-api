@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Data.SqlClient;
@@ -8,13 +5,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TP_AccessData;
 using SqlKata.Compilers;
-using TP_Domain.Commands;
+using System.Data;
+using TP_AccessData;
 using TP_AccessData.Commands;
-using TP_Domain.Queries;
 using TP_AccessData.Queries;
 using TP_Application.Services;
+using TP_Domain.Commands;
+using TP_Domain.Queries;
 
 namespace TP_Template_API
 {
@@ -24,7 +22,7 @@ namespace TP_Template_API
         {
             Configuration = configuration;
         }
-     
+
 
         public IConfiguration Configuration { get; }
 
@@ -44,13 +42,13 @@ namespace TP_Template_API
             {
                 return new SqlConnection(connectionString);
             });
-            
+
             //Injection dependences
             services.AddTransient<IGenericsRepository, GenericsRepository>();
             services.AddTransient<IEspecialidadQueries, EspecialidadQueries>();
             services.AddTransient<IEspecialidadService, EspecialidadService>();
             services.AddTransient<IProfesionalQueries, ProfesionalQueries>();
-            services.AddTransient<IProfesionalService , ProfesionalService>();
+            services.AddTransient<IProfesionalService, ProfesionalService>();
             services.AddTransient<IEspecialistaService, EspecialistaService>();
             services.AddCors(c =>
             {
