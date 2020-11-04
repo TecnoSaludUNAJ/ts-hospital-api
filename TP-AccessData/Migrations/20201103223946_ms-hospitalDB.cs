@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TP_AccessData.Migrations
 {
@@ -77,8 +77,7 @@ namespace TP_AccessData.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EspecialidadId = table.Column<int>(nullable: false),
-                    ProfesionalId = table.Column<int>(nullable: false),
-                    CalendarioTurnos = table.Column<int>(nullable: false)
+                    ProfesionalId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

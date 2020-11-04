@@ -11,7 +11,7 @@
         public Profesional Profesional { get; set; }
         public int ProfesionalId { get; set; }
 
-        public int CalendarioTurnos { get; set; }
+
 
     }
 }

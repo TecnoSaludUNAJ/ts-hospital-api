@@ -122,9 +122,6 @@ namespace TP_AccessData.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CalendarioTurnos")
-                        .HasColumnType("int");
-
                     b.Property<int>("EspecialidadId")
                         .HasColumnType("int");
 

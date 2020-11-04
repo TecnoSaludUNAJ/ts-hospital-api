@@ -10,7 +10,7 @@ using TP_AccessData;
 namespace TP_AccessData.Migrations
 {
     [DbContext(typeof(TemplateDbContext))]
-    [Migration("20201013200222_ms-hospitalDB")]
+    [Migration("20201103223946_ms-hospitalDB")]
     partial class mshospitalDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -123,9 +123,6 @@ namespace TP_AccessData.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CalendarioTurnos")
-                        .HasColumnType("int");
 
                     b.Property<int>("EspecialidadId")
                         .HasColumnType("int");
