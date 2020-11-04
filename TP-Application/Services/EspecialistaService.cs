@@ -35,6 +35,7 @@ namespace TP_Application.Services
             _repository.Add<Especialista>(esp);
             return new EspecialistaDto
             {
+               Id=esp.Id,
                 EspecialidadId = esp.EspecialidadId,
                 ProfesionalId = esp.ProfesionalId
             };
