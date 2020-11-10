@@ -25,9 +25,9 @@ namespace TP_Template_API.Controllers
             {
                 return new JsonResult(_service.CreateEspecialista(especialista)) { StatusCode = 201 };
             }
-            catch
+            catch(Exception e)
             {
-                return BadRequest();
+                return BadRequest(e.Message);
             }
         }
 
