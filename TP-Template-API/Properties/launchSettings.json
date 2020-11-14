@@ -12,11 +12,19 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "Swagger",    
+      "launchUrl": "Swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "TP_Template_API": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "chrome",
+      "applicationUrl": "http://localhost:51243",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
-   
+    }
   }
-}

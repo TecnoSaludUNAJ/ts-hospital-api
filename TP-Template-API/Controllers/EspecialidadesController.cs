@@ -19,9 +19,15 @@ namespace TP_Template_API.Controllers
         [HttpPost()]
         public IActionResult Post(EspecialidadDto especialidad)
         {
+            
             try
             {
-                return new JsonResult(_service.CreateEspecialidad(especialidad)) { StatusCode = 201 };
+                if (Validacion.ValidarNombre(especialidad.TipoEspecialidad))
+                {
+                    return new JsonResult(_service.CreateEspecialidad(especialidad)) { StatusCode = 201 };
+                }
+                throw new Exception();
+                
             }
             catch (Exception e)
             {

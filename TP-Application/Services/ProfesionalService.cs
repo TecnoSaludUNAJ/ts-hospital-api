@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TP_Domain.Commands;
 using TP_Domain.DTOs;
 using TP_Domain.Entities;
@@ -26,13 +27,14 @@ namespace TP_Application.Services
 
         public ResponseProfesional CreateProfesional(ProfesionalDto profesional)
         {
+           
             var entity = new Profesional
             {
                 Dni = profesional.Dni,
                 Matricula = profesional.Matricula,
                 Nombre = profesional.Nombre,
                 Apellido = profesional.Apellido,
-                FechaNacimiento = profesional.FechaNacimiento,
+                FechaNacimiento = Convert.ToDateTime(profesional.FechaNacimiento),
                 Sexo = profesional.Sexo,
                 Domicilio = profesional.Domicilio,
                 Email = profesional.Email,
