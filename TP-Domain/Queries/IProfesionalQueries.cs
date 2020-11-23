@@ -6,6 +6,6 @@ namespace TP_Domain.Queries
     public interface IProfesionalQueries
     {
         ResponseProfesional GetProfesionalById(int id);
-        List<ResponseProfesional> GetAllProfesionales(int IdEspecialidad);
+        List<ResponseProfesional> GetAllProfesionales(int IdEspecialidad, int usuarioId);
     }
 }

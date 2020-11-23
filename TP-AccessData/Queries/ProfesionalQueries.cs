@@ -28,24 +28,34 @@ namespace TP_AccessData.Queries
             if (profesional != null){return profesional;}
             else{return null;}
         }
-        public List<ResponseProfesional> GetAllProfesionales(int IdEspecialidad)
+        public List<ResponseProfesional> GetAllProfesionales(int IdEspecialidad, int usuarioId)
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
 
-            if (IdEspecialidad == 0)
+            if (IdEspecialidad != 0)
             {
-                var query = db.Query("Profesional");
+                var query = db.Query("Profesional")
+                .Join("Especialista", "Profesional.Id", "Especialista.ProfesionalId")
+                .Join("Especialidad", "Especialidad.Id", "Especialista.EspecialidadId")
+                .Where("Especialista.EspecialidadId", "=", IdEspecialidad);
+
                 var result = query.Get<ResponseProfesional>();
                 return result.ToList();
             }
 
+            if (usuarioId!=0)
+            {
+                var query = db.Query("Profesional")
+                    .Where("Profesional.UsuarioId","=",usuarioId);
+
+                var result = query.Get<ResponseProfesional>();
+
+                return result.ToList();
+            }
+            
             else
             {
-                var query = db.Query("Profesional")                 
-                    .Join("Especialista", "Profesional.Id", "Especialista.ProfesionalId")
-                    .Join("Especialidad", "Especialidad.Id", "Especialista.EspecialidadId")
-                    .Where("Especialista.EspecialidadId", "=", IdEspecialidad);
-
+                var query = db.Query("Profesional");
                 var result = query.Get<ResponseProfesional>();
                 return result.ToList();
             }

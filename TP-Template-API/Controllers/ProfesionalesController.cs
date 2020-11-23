@@ -18,11 +18,11 @@ namespace TP_Template_API.Controllers
 
         // GET: api/Profesionales
         [HttpGet]
-        public IActionResult GetAll([FromQuery] int IdEspecialidad)
+        public IActionResult GetAll([FromQuery] int IdEspecialidad, [FromQuery] int UsuarioId)
         {
             try
             {
-                return new JsonResult(_service.GetAll(IdEspecialidad)) { StatusCode = 200 };
+                return new JsonResult(_service.GetAll(IdEspecialidad,UsuarioId)) { StatusCode = 200 };
             }
             catch
             {
