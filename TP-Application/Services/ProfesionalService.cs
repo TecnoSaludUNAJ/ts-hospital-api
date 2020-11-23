@@ -38,7 +38,8 @@ namespace TP_Application.Services
                 Sexo = profesional.Sexo,
                 Domicilio = profesional.Domicilio,
                 Email = profesional.Email,
-                Telefono = profesional.Telefono
+                Telefono = profesional.Telefono,
+                UsuarioId=profesional.UsuarioId
 
             };
             _repository.Add<Profesional>(entity);

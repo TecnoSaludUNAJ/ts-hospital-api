@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TP_AccessData.Migrations
 {
-    public partial class mshospitalDB : Migration
+    public partial class mshospital : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,7 +63,8 @@ namespace TP_AccessData.Migrations
                     Sexo = table.Column<string>(nullable: false),
                     Domicilio = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false),
-                    Telefono = table.Column<string>(nullable: false)
+                    Telefono = table.Column<string>(nullable: false),
+                    UsuarioId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

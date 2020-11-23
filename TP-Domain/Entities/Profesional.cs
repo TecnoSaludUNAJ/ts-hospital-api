@@ -16,6 +16,7 @@ namespace TP_Domain.Entities
         [Required] public string Domicilio { get; set; }
         [Required] public string Email { get; set; }
         [Required] public string Telefono { get; set; }
+        public int UsuarioId { get; set; }
 
         public List<ProfesionalConsultorio> ProfesionalConsultorioNavigator { get; set; }
         public List<HospitalProfesional> HospitalProfesionalNavigator { get; set; }

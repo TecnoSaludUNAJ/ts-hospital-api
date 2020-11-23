@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using TP_Domain.Commands;
 
 namespace TP_AccessData.Commands
@@ -26,7 +27,7 @@ namespace TP_AccessData.Commands
 
         public void Update<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
     }

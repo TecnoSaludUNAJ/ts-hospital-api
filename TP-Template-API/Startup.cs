@@ -50,6 +50,7 @@ namespace TP_Template_API
             services.AddTransient<IProfesionalQueries, ProfesionalQueries>();
             services.AddTransient<IProfesionalService, ProfesionalService>();
             services.AddTransient<IEspecialistaService, EspecialistaService>();
+            services.AddTransient<IEspecialistaQueries, EspecialistaQueries>();
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());

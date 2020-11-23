@@ -31,5 +31,40 @@ namespace TP_Template_API.Controllers
             }
         }
 
+        [HttpGet("{Id?}")]
+        public IActionResult GetById(int Id)
+        {
+            try
+            {
+                EspecialistaDto esp = _service.GetById(Id);
+                if (esp != null)
+                {
+                    return new JsonResult(esp) { StatusCode = 200 };
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+        }
+
+
+        [HttpGet]
+        public IActionResult Getall()
+        {
+            try
+            {
+                return new JsonResult(_service.GetAll()) { StatusCode = 200 };
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
     }
 }

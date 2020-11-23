@@ -13,5 +13,6 @@ namespace TP_Domain.DTOs
         public string Domicilio { get; set; }
         public string Email { get; set; }
         public string Telefono { get; set; }
+        public int UsuarioId { get; set; }
     }
 }
