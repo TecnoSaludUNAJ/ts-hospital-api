@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using TP_AccessData;
 using TP_Application.Services;
@@ -19,6 +20,7 @@ namespace TP_Template_API.Controllers
 
         // POST: api/Especialistas
         [HttpPost]
+        [Authorize]
         public IActionResult PostEspecialista(EspecialistaDto especialista)
         {
             try
@@ -32,6 +34,7 @@ namespace TP_Template_API.Controllers
         }
 
         [HttpGet("{Id?}")]
+        [Authorize]
         public IActionResult GetById(int Id)
         {
             try
@@ -54,6 +57,7 @@ namespace TP_Template_API.Controllers
 
 
         [HttpGet]
+        [Authorize]
         public IActionResult Getall()
         {
             try
