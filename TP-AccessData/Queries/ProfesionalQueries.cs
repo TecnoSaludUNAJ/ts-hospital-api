@@ -73,10 +73,10 @@ namespace TP_AccessData.Queries
                 return null;
 
             var especialidadesQuery = db.Query("Especialista")
-                .Select("EspecialidadId AS Id", "TipoEspecialidad")
+                .Select("Especialista.Id AS EspecialistaId", "Especialista.ProfesionalId", "Especialista.EspecialidadId", "Especialidad.TipoEspecialidad")
                 .Join("Especialidad", "Especialidad.Id", "Especialista.EspecialidadId")
                 .Where("ProfesionalId", "=", profesionalQuery.Id)
-                .Get<ResponseEspecialidad>().ToList();
+                .Get<ResponseEspecialista>().ToList();
 
             return new ResponseProfesionalAndEspecialidades
             {

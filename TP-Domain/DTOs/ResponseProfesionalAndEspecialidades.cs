@@ -11,6 +11,6 @@ namespace TP_Domain.DTOs
         public string apellido { get; set; }
         public string matricula { get; set; }
         public int usuarioId { get; set; }
-        public List<ResponseEspecialidad> especialidades { get; set; }
+        public List<ResponseEspecialista> especialidades { get; set; }
     }
 }
