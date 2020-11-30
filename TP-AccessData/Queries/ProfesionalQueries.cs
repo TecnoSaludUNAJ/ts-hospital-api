@@ -61,5 +61,32 @@ namespace TP_AccessData.Queries
             }
 
         }
+
+        public ResponseProfesionalAndEspecialidades GetProfesionalAndEspecialidades(int usuarioid)
+        {
+            var db = new QueryFactory(connection, sqlKataCompiler);
+
+            var profesionalQuery = db.Query("Profesional")
+                .Where("Profesional.UsuarioId", "=", usuarioid)
+                .FirstOrDefault<ResponseProfesional>();
+            if (profesionalQuery == null)
+                return null;
+
+            var especialidadesQuery = db.Query("Especialista")
+                .Select("EspecialidadId AS Id", "TipoEspecialidad")
+                .Join("Especialidad", "Especialidad.Id", "Especialista.EspecialidadId")
+                .Where("ProfesionalId", "=", profesionalQuery.Id)
+                .Get<ResponseEspecialidad>().ToList();
+
+            return new ResponseProfesionalAndEspecialidades
+            {
+                Id = profesionalQuery.Id,
+                nombre = profesionalQuery.Nombre,
+                apellido = profesionalQuery.Apellido,
+                matricula = profesionalQuery.Matricula,
+                usuarioId = profesionalQuery.UsuarioId,
+                especialidades = especialidadesQuery
+            };
+        }
     }
 }

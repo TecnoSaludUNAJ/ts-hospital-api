@@ -12,6 +12,8 @@ namespace TP_Application.Services
         ResponseProfesional CreateProfesional(ProfesionalDto profesional);
         ResponseProfesional GetProfesionalById(int id);
         List<ResponseProfesional> GetAll(int IdEspecialidad,int usuarioid);
+
+        ResponseProfesionalAndEspecialidades GetProfesionalByUserId(int usuarioid);
     }
 
     public class ProfesionalService : IProfesionalService
@@ -61,6 +63,11 @@ namespace TP_Application.Services
         public ResponseProfesional GetProfesionalById(int id)
         {
             return _query.GetProfesionalById(id);
+        }
+
+        public ResponseProfesionalAndEspecialidades GetProfesionalByUserId(int usuarioid)
+        {
+            return _query.GetProfesionalAndEspecialidades(usuarioid);
         }
     }
 }

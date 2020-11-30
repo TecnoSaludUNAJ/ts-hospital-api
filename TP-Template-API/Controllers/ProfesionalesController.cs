@@ -76,6 +76,27 @@ namespace TP_Template_API.Controllers
             }
         }
 
+        [HttpGet("userId/{Id?}")]
+        [Authorize]
+        public IActionResult GetByUserId(int Id)
+        {
+            try
+            {
+                ResponseProfesionalAndEspecialidades prof = _service.GetProfesionalByUserId(Id);
+                if (prof != null)
+                {
+                    return new JsonResult(prof) { StatusCode = 200 };
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch
+            {
+                return NotFound();
+            }
 
+        }
     }
 }
