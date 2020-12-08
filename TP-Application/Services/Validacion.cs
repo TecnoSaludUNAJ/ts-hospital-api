@@ -37,21 +37,5 @@ namespace TP_Application.Services
             return resultado;
         }
 
-        public static bool ValidarFecha(string fecha)
-        {
-            if (fecha != null)
-            {
-                string expresion = @"^\d?\d[-/]\d?\d[-/]\d\d\d\d$";
-
-                Regex regex = new Regex(expresion);
-
-                Match match = regex.Match(fecha);
-
-                bool resultado = match.Success == true ? true : false;
-
-                return resultado;
-            }
-            else return true;
-        }
     }
 }

@@ -10,8 +10,8 @@ using TP_AccessData;
 namespace TP_AccessData.Migrations
 {
     [DbContext(typeof(TemplateDbContext))]
-    [Migration("20201123010819_ms-hospital")]
-    partial class mshospital
+    [Migration("20201208040254_ts-hospital-api")]
+    partial class tshospitalapi
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

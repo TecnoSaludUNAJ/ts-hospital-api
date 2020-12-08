@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TP_AccessData.Migrations
 {
-    public partial class mshospital : Migration
+    public partial class tshospitalapi : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
