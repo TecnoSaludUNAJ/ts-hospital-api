@@ -32,7 +32,7 @@ namespace TP_AccessData.Queries
             return especialista;
         }
 
-        public List<EspecialistaDto> GetAll()
+        public List<EspecialistaInfoDto> GetAll()
         {
             var db = new QueryFactory(connection, sqlKataCompiler);
 
@@ -40,7 +40,7 @@ namespace TP_AccessData.Queries
                 .Join("Profesional", "Especialista.ProfesionalId", "Profesional.Id")
                 .Join("Especialidad", "Especialista.EspecialidadId", "Especialidad.Id");
 
-            var result = query.Get<EspecialistaDto>();
+            var result = query.Get<EspecialistaInfoDto>();
 
             return result.ToList();
 

@@ -8,6 +8,6 @@ namespace TP_Domain.Queries
     public interface IEspecialistaQueries
     {
         EspecialistaDto GetById(int id);
-        List<EspecialistaDto> GetAll();
+        List<EspecialistaInfoDto> GetAll();
     }
 }

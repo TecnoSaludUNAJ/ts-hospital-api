@@ -11,7 +11,7 @@ namespace TP_Application.Services
     {
         EspecialistaDto CreateEspecialista(EspecialistaDto especialista);
         EspecialistaDto GetById(int id);
-        List<EspecialistaDto> GetAll();
+        List<EspecialistaInfoDto> GetAll();
     }
 
     public class EspecialistaService : IEspecialistaService
@@ -46,7 +46,7 @@ namespace TP_Application.Services
             };
         }
 
-        public List<EspecialistaDto> GetAll()
+        public List<EspecialistaInfoDto> GetAll()
         {
             return _queryEspecialista.GetAll();
         }
