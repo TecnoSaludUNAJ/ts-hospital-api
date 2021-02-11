@@ -61,13 +61,9 @@ namespace TP_Template_API.Controllers
         {
             try
             {
-                if (Validacion.ValidarNombre(profesional.Apellido) && Validacion.ValidarNombre(profesional.Nombre) 
-                    && Validacion.ValidarDni(profesional.Dni))
-                {
-                    return new JsonResult(_service.CreateProfesional(profesional)) { StatusCode = 201 };
-                }
-                throw new Exception();
-              
+
+                return new JsonResult(_service.CreateProfesional(profesional)) { StatusCode = 201 };
+
             }
             catch (Exception e)
             {
